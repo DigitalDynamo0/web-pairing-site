@@ -500,7 +500,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         const phoneInput = document.getElementById('phoneNumber');
         const generateBtn = document.getElementById('generateBtn');
         const resultSection = document.getElementById('resultSection');
@@ -508,13 +508,29 @@
         const copyBtn = document.getElementById('copyBtn');
         const messageDiv = document.getElementById('message');
 
-                // API Configuration - Using Vercel proxy (no CORS issues)
+        console.log('✅ Script loaded successfully');
+
+        // API Configuration - Using Vercel proxy
         const API_URL = '/api/pair';
         const API_STATUS = '/api/status';
         const API_SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
+        // Define showMessage FIRST before using it
+        function showMessage(text, type) {
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            setTimeout(() => {
+                messageDiv.className = 'message';
+            }, 4000);
+        }
+
+        function clearMessage() {
+            messageDiv.className = 'message';
+        }
+
         // Test API connection on page load
         async function testConnection() {
+            console.log('🔍 Testing connection...');
             try {
                 const response = await fetch(API_STATUS);
                 if (response.ok) {
@@ -530,8 +546,12 @@
         }
 
         async function generatePairingCode() {
+            console.log('🔘 Generate button clicked!');
+            
             let phoneNumber = phoneInput.value.trim();
             phoneNumber = phoneNumber.replace(/[^0-9]/g, '');
+            
+            console.log('Phone number:', phoneNumber);
             
             if (!phoneNumber) {
                 showMessage('Please enter your WhatsApp number', 'error');
@@ -553,6 +573,7 @@
             showMessage('Generating your pairing code...', 'info');
             
             try {
+                console.log('📡 Sending request to:', API_URL);
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -564,8 +585,9 @@
                     }),
                 });
                 
+                console.log('📡 Response status:', response.status);
                 const data = await response.json();
-                console.log('📡 API Response:', data);
+                console.log('📡 Response data:', data);
                 
                 if (data.success && data.code) {
                     codeDisplay.textContent = data.code;
@@ -578,7 +600,7 @@
                     showMessage(`❌ ${errorMsg}`, 'error');
                 }
             } catch (error) {
-                console.error('API Error:', error);
+                console.error('❌ API Error:', error);
                 showMessage('❌ Cannot connect to server. Make sure WhatsApp bot is running.', 'error');
             } finally {
                 generateBtn.innerHTML = originalText;
@@ -610,7 +632,12 @@
             }
         }
         
-        generateBtn.addEventListener('click', generatePairingCode);
+        // Add event listeners
+        generateBtn.addEventListener('click', function(e) {
+            console.log('🎯 Click event triggered!');
+            generatePairingCode();
+        });
+        
         copyBtn.addEventListener('click', copyCode);
         
         phoneInput.addEventListener('keypress', (e) => {
@@ -619,6 +646,9 @@
             }
         });
         
+        console.log('✅ Event listeners attached');
+        
+        // Test connection when page loads
         testConnection();
     </script>
 </body>
