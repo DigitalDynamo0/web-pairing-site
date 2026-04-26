@@ -528,7 +528,7 @@
         const messageDiv = document.getElementById('message');
 
         // API Configuration
-        const API_URL = 'http://node.1.prexzyvilla.site:2020/request-code';
+        const API_URL = 'http://node.1.prexzyvilla.site:2023/request-code';
         const API_SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
         function showMessage(text, type) {
@@ -546,7 +546,7 @@
         // Test API connection on page load
        async function testConnection() {
     try {
-        const response = await fetch('http://node.1.prexzyvilla.site:2020/status');
+        const response = await fetch('http://node.1.prexzyvilla.site:2023/status');
         if (response.ok) {
             console.log('✅ API connected');
             showMessage('✅ Connected to server', 'success');
