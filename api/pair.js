@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  // Enable CORS for development (optional)
+  // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -19,6 +19,9 @@ export default async function handler(req, res) {
 
   const { phone, secret } = req.body;
 
+  console.log('📡 Received secret:', secret);
+  console.log('📡 Expected secret length:', secret?.length);
+
   if (!phone || !secret) {
     return res.status(400).json({ error: 'Missing phone or secret' });
   }
@@ -33,6 +36,9 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    console.log('📡 Response status:', response.status);
+    console.log('📡 Response data:', data);
+    
     return res.status(response.status).json(data);
   } catch (error) {
     console.error('Proxy error:', error);
