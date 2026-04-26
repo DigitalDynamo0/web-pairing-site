@@ -508,27 +508,15 @@
         const copyBtn = document.getElementById('copyBtn');
         const messageDiv = document.getElementById('message');
 
-        // API Configuration - Direct call (no proxy needed if CORS is properly configured)
-        const API_BASE = 'http://node.1.prexzyvilla.site:2023';
-        const API_URL = API_BASE + '/request-code';
+                // API Configuration - Using Vercel proxy (no CORS issues)
+        const API_URL = '/api/pair';
+        const API_STATUS = '/api/status';
         const API_SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
-
-        function showMessage(text, type) {
-            messageDiv.textContent = text;
-            messageDiv.className = `message ${type}`;
-            setTimeout(() => {
-                messageDiv.className = 'message';
-            }, 4000);
-        }
-
-        function clearMessage() {
-            messageDiv.className = 'message';
-        }
 
         // Test API connection on page load
         async function testConnection() {
             try {
-                const response = await fetch(API_BASE + '/status');
+                const response = await fetch(API_STATUS);
                 if (response.ok) {
                     const data = await response.json();
                     console.log('✅ API connected', data);
@@ -537,7 +525,7 @@
                 }
             } catch (error) {
                 console.error('❌ API not reachable:', error);
-                showMessage('⚠️ Server connecting... If this persists, the API may be offline.', 'info');
+                showMessage('⚠️ Server connecting...', 'info');
             }
         }
 
@@ -591,13 +579,7 @@
                 }
             } catch (error) {
                 console.error('API Error:', error);
-                
-                // If CORS error, show helpful message
-                if (error.message.includes('fetch') || error.message.includes('CORS')) {
-                    showMessage('❌ CORS error: Unable to connect. The API server needs CORS headers enabled.', 'error');
-                } else {
-                    showMessage('❌ Cannot connect to server. Make sure WhatsApp bot is running.', 'error');
-                }
+                showMessage('❌ Cannot connect to server. Make sure WhatsApp bot is running.', 'error');
             } finally {
                 generateBtn.innerHTML = originalText;
                 generateBtn.disabled = false;
