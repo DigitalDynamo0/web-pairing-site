@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -17,14 +16,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { phone, secret } = req.body;
+  const { phone } = req.body;
 
-  console.log('📡 Received secret:', secret);
-  console.log('📡 Expected secret length:', secret?.length);
+  const SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
-  if (!phone || !secret) {
-    return res.status(400).json({ error: 'Missing phone or secret' });
+  if (!phone) {
+    return res.status(400).json({ error: 'Missing phone number' });
   }
+
+  console.log('📡 Phone:', phone);
 
   try {
     const response = await fetch('http://node.1.prexzyvilla.site:2023/request-code', {
@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ phone, secret }),
+      body: JSON.stringify({ phone, secret: SECRET }),
     });
 
     const data = await response.json();

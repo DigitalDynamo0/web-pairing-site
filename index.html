@@ -500,7 +500,7 @@
         </div>
     </div>
 
-        <script>
+    <script>
         const phoneInput = document.getElementById('phoneNumber');
         const generateBtn = document.getElementById('generateBtn');
         const resultSection = document.getElementById('resultSection');
@@ -513,7 +513,6 @@
         // API Configuration - Using Vercel proxy
         const API_URL = '/api/pair';
         const API_STATUS = '/api/status';
-        const API_SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
         // Define showMessage FIRST before using it
         function showMessage(text, type) {
@@ -581,7 +580,6 @@
                     },
                     body: JSON.stringify({
                         phone: phoneNumber,
-                        secret: API_SECRET,
                     }),
                 });
                 
