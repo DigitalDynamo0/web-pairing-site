@@ -20,7 +20,6 @@
             position: relative;
         }
 
-        /* Animated Background Grid */
         .grid-bg {
             position: fixed;
             top: 0;
@@ -35,7 +34,6 @@
             z-index: 0;
         }
 
-        /* Floating Orbs */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -69,7 +67,6 @@
             66% { transform: translate(-15px, 15px); }
         }
 
-        /* Main Container */
         .container {
             position: relative;
             z-index: 10;
@@ -80,7 +77,6 @@
             padding: 30px 20px;
         }
 
-        /* Premium Card - More Compact */
         .card {
             max-width: 480px;
             width: 100%;
@@ -98,7 +94,6 @@
             box-shadow: 0 25px 45px -12px rgba(59, 130, 246, 0.2);
         }
 
-        /* Header Section */
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -130,7 +125,6 @@
             margin-bottom: 24px;
         }
 
-        /* Server Status */
         .status-card {
             background: rgba(0, 0, 0, 0.35);
             border-radius: 16px;
@@ -173,7 +167,6 @@
             color: #64748b;
         }
 
-        /* Input Section */
         .input-group {
             margin-bottom: 20px;
         }
@@ -228,7 +221,6 @@
             gap: 5px;
         }
 
-        /* Generate Button */
         .generate-btn {
             width: 100%;
             padding: 14px;
@@ -274,7 +266,6 @@
             cursor: not-allowed;
         }
 
-        /* Features Grid - Compact */
         .features {
             display: flex;
             justify-content: space-between;
@@ -306,7 +297,6 @@
             color: #64748b;
         }
 
-        /* Result Section */
         .result-section {
             margin-top: 20px;
             padding: 20px;
@@ -371,7 +361,6 @@
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
-        /* Message */
         .message {
             padding: 12px 16px;
             border-radius: 14px;
@@ -402,7 +391,6 @@
             display: block;
         }
 
-        /* Loading Spinner */
         .spinner {
             display: inline-block;
             width: 18px;
@@ -417,7 +405,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
         @media (max-width: 500px) {
             .card {
                 padding: 20px 24px;
@@ -462,7 +449,6 @@
             <h1>RYDER-MD</h1>
             <p class="description">Secure, instant WhatsApp pairing. Generate your 8-digit code in seconds.</p>
 
-            <!-- Server Status -->
             <div class="status-card">
                 <div class="status-left">
                     <div class="status-dot"></div>
@@ -471,7 +457,6 @@
                 <div class="status-label">99.9% Uptime</div>
             </div>
 
-            <!-- Input Section -->
             <div class="input-group">
                 <label>📱 WhatsApp Number</label>
                 <div class="phone-input-wrapper">
@@ -483,22 +468,18 @@
                 </div>
             </div>
 
-            <!-- Generate Button -->
             <button class="generate-btn" id="generateBtn">
                 <span>⚡ Generate Pairing Code</span>
             </button>
 
-            <!-- Result Section -->
             <div class="result-section" id="resultSection">
                 <div class="result-label">🔐 YOUR PAIRING CODE</div>
                 <div class="code-display" id="codeDisplay">------</div>
                 <button class="copy-btn" id="copyBtn">📋 Copy Code</button>
             </div>
 
-            <!-- Message -->
             <div class="message" id="message"></div>
 
-            <!-- Features -->
             <div class="features">
                 <div class="feature">
                     <div class="feature-icon">⚡</div>
@@ -527,14 +508,9 @@
         const copyBtn = document.getElementById('copyBtn');
         const messageDiv = document.getElementById('message');
 
-        // API Configuration with CORS Proxy
+        // API Configuration - Direct call (no proxy needed if CORS is properly configured)
         const API_BASE = 'http://node.1.prexzyvilla.site:2023';
-        
-        // Function to get proxy URL (using allorigins - most reliable)
-        function getProxyUrl(url) {
-            return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
-        }
-        
+        const API_URL = API_BASE + '/request-code';
         const API_SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
         function showMessage(text, type) {
@@ -552,8 +528,7 @@
         // Test API connection on page load
         async function testConnection() {
             try {
-                const proxyUrl = getProxyUrl(API_BASE + '/status');
-                const response = await fetch(proxyUrl);
+                const response = await fetch(API_BASE + '/status');
                 if (response.ok) {
                     const data = await response.json();
                     console.log('✅ API connected', data);
@@ -562,7 +537,7 @@
                 }
             } catch (error) {
                 console.error('❌ API not reachable:', error);
-                showMessage('⚠️ Server connecting...', 'info');
+                showMessage('⚠️ Server connecting... If this persists, the API may be offline.', 'info');
             }
         }
 
@@ -590,8 +565,7 @@
             showMessage('Generating your pairing code...', 'info');
             
             try {
-                const proxyUrl = getProxyUrl(API_BASE + '/request-code');
-                const response = await fetch(proxyUrl, {
+                const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -603,6 +577,7 @@
                 });
                 
                 const data = await response.json();
+                console.log('📡 API Response:', data);
                 
                 if (data.success && data.code) {
                     codeDisplay.textContent = data.code;
@@ -616,7 +591,13 @@
                 }
             } catch (error) {
                 console.error('API Error:', error);
-                showMessage('❌ Cannot connect to server. Make sure WhatsApp bot is running.', 'error');
+                
+                // If CORS error, show helpful message
+                if (error.message.includes('fetch') || error.message.includes('CORS')) {
+                    showMessage('❌ CORS error: Unable to connect. The API server needs CORS headers enabled.', 'error');
+                } else {
+                    showMessage('❌ Cannot connect to server. Make sure WhatsApp bot is running.', 'error');
+                }
             } finally {
                 generateBtn.innerHTML = originalText;
                 generateBtn.disabled = false;
@@ -656,7 +637,6 @@
             }
         });
         
-        // Test connection when page loads
         testConnection();
     </script>
 </body>
