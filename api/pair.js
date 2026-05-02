@@ -27,7 +27,8 @@ export default async function handler(req, res) {
   console.log('📡 Phone:', phone);
 
   try {
-    const response = await fetch('http://node.1.prexzyvilla.site:2023/request-code', {
+    // UPDATED: New panel URL
+    const response = await fetch('http://zentrix-node.malvryx.dev:3143/request-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
