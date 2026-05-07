@@ -7,8 +7,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED: New panel URL
-    const response = await fetch('http://zentrix-node.malvryx.dev:3143/status');
+    // UPDATED: New panel URL - node.1.prexzyvilla.site:2046
+    const response = await fetch('http://node.1.prexzyvilla.site:2046/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
