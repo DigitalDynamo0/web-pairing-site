@@ -75,6 +75,7 @@
             justify-content: center;
             align-items: center;
             padding: 30px 20px;
+            flex-direction: column;
         }
 
         .card {
@@ -405,6 +406,35 @@
             to { transform: rotate(360deg); }
         }
 
+        .footer {
+            text-align: center;
+            padding: 24px 20px 20px 20px;
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: #475569;
+            border-top: 1px solid rgba(51, 65, 85, 0.2);
+            margin-top: 30px;
+            width: 100%;
+            max-width: 480px;
+            font-family: 'Inter', monospace;
+            backdrop-filter: blur(4px);
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #60a5fa;
+        }
+
+        .footer span {
+            opacity: 0.6;
+        }
+
         @media (max-width: 500px) {
             .card {
                 padding: 20px 24px;
@@ -433,6 +463,11 @@
             
             .feature-icon {
                 margin-bottom: 0;
+            }
+
+            .footer {
+                font-size: 9px;
+                padding: 20px 16px 16px 16px;
             }
         }
     </style>
@@ -497,6 +532,10 @@
                     <div class="feature-desc">Always online</div>
                 </div>
             </div>
+        </div>
+
+        <div class="footer">
+            <span>© 2026 RYDER TECH | RYDER-MD</span>
         </div>
     </div>
 
