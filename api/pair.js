@@ -17,7 +17,6 @@ export default async function handler(req, res) {
   }
 
   const { phone } = req.body;
-
   const SECRET = 'RYDER_MD_SECRET_2026_7X9kLmNpQwRtYz';
 
   if (!phone) {
@@ -27,8 +26,8 @@ export default async function handler(req, res) {
   console.log('📡 Phone:', phone);
 
   try {
-    // UPDATED: New panel details - port 2064
-    const response = await fetch('http://node.1.prexzyvilla.site:2064/request-code', {
+    // UPDATED: New panel URL - node.tomiwa.prexzyvilla.site:2052
+    const response = await fetch('http://node.tomiwa.prexzyvilla.site:2052/request-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -7,8 +7,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED: New panel details - port 2064
-    const response = await fetch('http://node.1.prexzyvilla.site:2064/status');
+    // UPDATED: New panel URL - node.tomiwa.prexzyvilla.site:2052
+    const response = await fetch('http://node.tomiwa.prexzyvilla.site:2052/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
