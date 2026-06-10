@@ -26,8 +26,8 @@ export default async function handler(req, res) {
   console.log('📡 Phone:', phone);
 
   try {
-    // UPDATED: New panel URL - node.tomiwa.prexzyvilla.site:2052
-    const response = await fetch('http://node.tomiwa.prexzyvilla.site:2052/request-code', {
+    // UPDATED: New panel URL - de20.spaceify.eu:25015
+    const response = await fetch('http://de20.spaceify.eu:25015/request-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

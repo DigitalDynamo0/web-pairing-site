@@ -7,8 +7,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED: New panel URL - node.tomiwa.prexzyvilla.site:2052
-    const response = await fetch('http://node.tomiwa.prexzyvilla.site:2052/status');
+    // UPDATED: New panel URL - de20.spaceify.eu:25015
+    const response = await fetch('http://de20.spaceify.eu:25015/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
