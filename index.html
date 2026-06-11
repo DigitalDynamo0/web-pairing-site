@@ -14,15 +14,12 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #0a0a0a;
+            background: linear-gradient(145deg, #0d0d15 0%, #15100a 100%);
             min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -34,22 +31,22 @@
         .card {
             max-width: 480px;
             width: 100%;
-            background: #111111;
-            border-radius: 24px;
-            border: 1px solid #2a2a2a;
+            background: rgba(20, 18, 22, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            border: 1px solid rgba(180, 40, 60, 0.3);
             padding: 32px;
-            transition: all 0.3s ease;
         }
 
         .badge {
             display: inline-block;
             padding: 4px 12px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: rgba(180, 40, 60, 0.12);
+            border: 1px solid rgba(180, 40, 60, 0.4);
             border-radius: 100px;
             font-size: 11px;
             font-weight: 500;
-            color: #888;
+            color: #c44;
             margin-bottom: 20px;
             letter-spacing: 0.5px;
         }
@@ -57,27 +54,30 @@
         h1 {
             font-size: 32px;
             font-weight: 700;
-            color: #fff;
+            background: linear-gradient(135deg, #fff, #c44);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 8px;
             letter-spacing: -0.5px;
         }
 
         .description {
-            color: #666;
+            color: #aaa;
             font-size: 13px;
             line-height: 1.5;
             margin-bottom: 24px;
         }
 
         .status-card {
-            background: #0a0a0a;
+            background: rgba(0, 0, 0, 0.35);
             border-radius: 16px;
             padding: 12px 16px;
             margin-bottom: 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 1px solid #222;
+            border: 1px solid rgba(180, 40, 60, 0.2);
         }
 
         .status-left {
@@ -90,18 +90,19 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #dc143c;
+            background: #c44;
+            box-shadow: 0 0 6px #c44;
         }
 
         .status-text {
             font-size: 12px;
             font-weight: 500;
-            color: #ccc;
+            color: #ddd;
         }
 
         .status-label {
             font-size: 11px;
-            color: #555;
+            color: #777;
         }
 
         .input-group {
@@ -112,7 +113,7 @@
             display: block;
             font-size: 13px;
             font-weight: 500;
-            color: #aaa;
+            color: #ccc;
             margin-bottom: 8px;
         }
 
@@ -122,31 +123,26 @@
             align-items: center;
         }
 
-        .country-code-selector {
-            width: 110px;
-            position: relative;
+        .country-code-input {
+            width: 100px;
         }
 
-        .country-code-selector select {
+        .country-code-input input {
             width: 100%;
             padding: 14px 12px;
-            background: #0a0a0a;
-            border: 1px solid #333;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(180, 40, 60, 0.3);
             border-radius: 12px;
             font-size: 14px;
             font-weight: 500;
             color: #fff;
-            cursor: pointer;
+            text-align: center;
             transition: all 0.3s;
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='18px' height='18px'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
         }
 
-        .country-code-selector select:focus {
+        .country-code-input input:focus {
             outline: none;
-            border-color: #555;
+            border-color: #c44;
         }
 
         .phone-number-input {
@@ -156,8 +152,8 @@
         .phone-number-input input {
             width: 100%;
             padding: 14px 16px;
-            background: #0a0a0a;
-            border: 1px solid #333;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(180, 40, 60, 0.3);
             border-radius: 12px;
             font-size: 15px;
             color: #fff;
@@ -166,32 +162,32 @@
 
         .phone-number-input input:focus {
             outline: none;
-            border-color: #555;
+            border-color: #c44;
         }
 
         .input-hint {
             font-size: 11px;
-            color: #555;
+            color: #777;
             margin-top: 8px;
         }
 
         .generate-btn {
             width: 100%;
             padding: 14px;
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: linear-gradient(135deg, #6b1010, #2a0505);
+            border: 1px solid #c44;
             border-radius: 40px;
             color: #fff;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             margin-bottom: 20px;
         }
 
         .generate-btn:hover {
-            background: #222;
-            border-color: #555;
+            background: linear-gradient(135deg, #8b1515, #3a0808);
+            border-color: #e55;
         }
 
         .generate-btn:disabled {
@@ -205,7 +201,7 @@
             gap: 12px;
             margin-top: 20px;
             padding-top: 16px;
-            border-top: 1px solid #222;
+            border-top: 1px solid rgba(180, 40, 60, 0.2);
         }
 
         .feature {
@@ -216,21 +212,21 @@
         .feature-title {
             font-size: 11px;
             font-weight: 600;
-            color: #888;
+            color: #c44;
             margin-bottom: 3px;
         }
 
         .feature-desc {
             font-size: 9px;
-            color: #555;
+            color: #777;
         }
 
         .result-section {
             margin-top: 20px;
             padding: 20px;
-            background: #0a0a0a;
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 16px;
-            border: 1px solid #333;
+            border: 1px solid #c44;
             text-align: center;
             display: none;
         }
@@ -243,7 +239,7 @@
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #888;
+            color: #c44;
             margin-bottom: 10px;
         }
 
@@ -252,8 +248,8 @@
             font-weight: 700;
             letter-spacing: 4px;
             font-family: 'Courier New', monospace;
-            color: #fff;
-            background: #000;
+            color: #c44;
+            background: #0a0a0a;
             padding: 16px;
             border-radius: 12px;
             margin: 12px 0;
@@ -263,7 +259,7 @@
         .copy-btn {
             background: #1a1a1a;
             padding: 10px 20px;
-            border: 1px solid #333;
+            border: 1px solid #c44;
             border-radius: 40px;
             color: #fff;
             font-size: 13px;
@@ -273,8 +269,8 @@
         }
 
         .copy-btn:hover {
-            background: #222;
-            border-color: #555;
+            background: #c44;
+            color: #fff;
         }
 
         .message {
@@ -287,23 +283,23 @@
         }
 
         .message.success {
-            background: #0a1a0a;
-            border: 1px solid #2a4a2a;
-            color: #4a8a4a;
+            background: rgba(0, 200, 0, 0.1);
+            border: 1px solid #0a0;
+            color: #0a0;
             display: block;
         }
 
         .message.error {
-            background: #1a0a0a;
-            border: 1px solid #4a2a2a;
-            color: #dc143c;
+            background: rgba(200, 50, 50, 0.1);
+            border: 1px solid #c44;
+            color: #c44;
             display: block;
         }
 
         .message.info {
-            background: #0a0a1a;
-            border: 1px solid #2a2a4a;
-            color: #888;
+            background: rgba(100, 100, 200, 0.1);
+            border: 1px solid #668;
+            color: #aaf;
             display: block;
         }
 
@@ -312,7 +308,7 @@
             width: 18px;
             height: 18px;
             border: 2px solid rgba(255, 255, 255, 0.1);
-            border-top-color: #fff;
+            border-top-color: #c44;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
@@ -325,7 +321,7 @@
             text-align: center;
             padding: 20px 20px 0 20px;
             font-size: 10px;
-            color: #444;
+            color: #666;
             margin-top: 20px;
             width: 100%;
             max-width: 480px;
@@ -333,8 +329,9 @@
 
         .footer .quote {
             font-size: 9px;
-            color: #666;
+            color: #c44;
             margin-top: 6px;
+            opacity: 0.7;
         }
 
         @media (max-width: 500px) {
@@ -368,7 +365,7 @@
                 gap: 10px;
             }
             
-            .country-code-selector {
+            .country-code-input {
                 width: 100%;
             }
         }
@@ -380,7 +377,7 @@
             <div class="badge">UPPER MOON PROTOCOL</div>
             
             <h1>RYDER-MD</h1>
-            <p class="description">己の力で、天下を取れ。</p>
+            <p class="description">Onore no chikara de, tenka o tore.</p>
 
             <div class="status-card">
                 <div class="status-left">
@@ -393,35 +390,14 @@
             <div class="input-group">
                 <label>WhatsApp Number</label>
                 <div class="phone-input-row">
-                    <div class="country-code-selector">
-                        <select id="countryCode">
-                            <option value="234">🇳🇬 +234 (Nigeria)</option>
-                            <option value="1">🇺🇸 +1 (USA)</option>
-                            <option value="44">🇬🇧 +44 (UK)</option>
-                            <option value="91">🇮🇳 +91 (India)</option>
-                            <option value="92">🇵🇰 +92 (Pakistan)</option>
-                            <option value="20">🇪🇬 +20 (Egypt)</option>
-                            <option value="27">🇿🇦 +27 (South Africa)</option>
-                            <option value="33">🇫🇷 +33 (France)</option>
-                            <option value="49">🇩🇪 +49 (Germany)</option>
-                            <option value="81">🇯🇵 +81 (Japan)</option>
-                            <option value="82">🇰🇷 +82 (Korea)</option>
-                            <option value="55">🇧🇷 +55 (Brazil)</option>
-                            <option value="61">🇦🇺 +61 (Australia)</option>
-                            <option value="62">🇮🇩 +62 (Indonesia)</option>
-                            <option value="60">🇲🇾 +60 (Malaysia)</option>
-                            <option value="65">🇸🇬 +65 (Singapore)</option>
-                            <option value="966">🇸🇦 +966 (Saudi Arabia)</option>
-                            <option value="971">🇦🇪 +971 (UAE)</option>
-                            <option value="233">🇬🇭 +233 (Ghana)</option>
-                            <option value="254">🇰🇪 +254 (Kenya)</option>
-                        </select>
+                    <div class="country-code-input">
+                        <input type="tel" id="countryCode" placeholder="234" value="234" autocomplete="off">
                     </div>
                     <div class="phone-number-input">
                         <input type="tel" id="phoneNumber" placeholder="8012345678" autocomplete="off">
                     </div>
                 </div>
-                <div class="input-hint">Enter your number without country code</div>
+                <div class="input-hint">Country code + phone number (e.g., 234 8012345678)</div>
             </div>
 
             <button class="generate-btn" id="generateBtn">
@@ -459,7 +435,7 @@
     </div>
 
     <script>
-        const countryCodeSelect = document.getElementById('countryCode');
+        const countryCodeInput = document.getElementById('countryCode');
         const phoneInput = document.getElementById('phoneNumber');
         const generateBtn = document.getElementById('generateBtn');
         const resultSection = document.getElementById('resultSection');
@@ -490,9 +466,16 @@
         }
 
         async function generatePairingCode() {
-            const countryCode = countryCodeSelect.value;
+            let countryCode = countryCodeInput.value.trim();
             let localNumber = phoneInput.value.trim();
+            
+            countryCode = countryCode.replace(/[^0-9]/g, '');
             localNumber = localNumber.replace(/[^0-9]/g, '');
+            
+            if (!countryCode) {
+                showMessage('Please enter your country code', 'error');
+                return;
+            }
             
             if (!localNumber) {
                 showMessage('Please enter your WhatsApp number', 'error');
@@ -502,7 +485,7 @@
             const fullNumber = countryCode + localNumber;
             
             if (fullNumber.length < 8) {
-                showMessage('Invalid number. Include country code.', 'error');
+                showMessage('Invalid number. Check country code and number.', 'error');
                 return;
             }
             
@@ -569,8 +552,11 @@
         
         generateBtn.addEventListener('click', generatePairingCode);
         copyBtn.addEventListener('click', copyCode);
-        phoneInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') generatePairingCode();
+        
+        [countryCodeInput, phoneInput].forEach(input => {
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') generatePairingCode();
+            });
         });
         
         testConnection();
