@@ -69,13 +69,6 @@
             letter-spacing: 1px;
         }
 
-        .description {
-            color: #aaa;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-
         .status-card {
             background: rgba(0, 0, 0, 0.35);
             border-radius: 16px;
@@ -128,10 +121,12 @@
             display: flex;
             gap: 12px;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         .country-code-input {
             width: 110px;
+            flex-shrink: 0;
             position: relative;
         }
 
@@ -164,6 +159,7 @@
 
         .phone-number-input {
             flex: 1;
+            min-width: 0;
         }
 
         .phone-number-input input {
@@ -377,13 +373,29 @@
                 text-align: left;
             }
             
+            /* Keep side by side on mobile */
             .phone-input-row {
-                flex-direction: column;
+                flex-wrap: nowrap;
                 gap: 10px;
             }
             
             .country-code-input {
-                width: 100%;
+                width: 100px;
+            }
+            
+            .country-code-input input {
+                padding: 12px 8px 12px 34px;
+                font-size: 13px;
+            }
+            
+            .country-flag {
+                font-size: 16px;
+                left: 8px;
+            }
+            
+            .phone-number-input input {
+                padding: 12px 12px;
+                font-size: 13px;
             }
         }
     </style>
@@ -465,7 +477,6 @@
         const API_URL = '/api/pair';
         const API_STATUS = '/api/status';
 
-        // Country code to flag mapping
         const countryFlags = {
             '1': '🇺🇸', '7': '🇰🇿', '20': '🇪🇬', '27': '🇿🇦', '30': '🇬🇷', '31': '🇳🇱',
             '32': '🇧🇪', '33': '🇫🇷', '34': '🇪🇸', '36': '🇭🇺', '39': '🇮🇹',
