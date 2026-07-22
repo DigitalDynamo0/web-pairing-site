@@ -7,8 +7,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED: New panel URL - de20.spaceify.eu:25015
-    const response = await fetch('http://de20.spaceify.eu:25015/status');
+    // UPDATED: New panel URL - node2.zone.id:21034
+    const response = await fetch('http://node2.zone.id:21034/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {
