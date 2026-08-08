@@ -7,8 +7,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // UPDATED: New panel URL - node2.zone.id:21034
-    const response = await fetch('http://node2.zone.id:21034/status');
+    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2015/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {

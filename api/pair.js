@@ -26,8 +26,7 @@ export default async function handler(req, res) {
   console.log('📡 Phone:', phone);
 
   try {
-    // UPDATED: New panel URL - node2.zone.id:21034
-    const response = await fetch('http://node2.zone.id:21034/request-code', {
+    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2015/request-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
