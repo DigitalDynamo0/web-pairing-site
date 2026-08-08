@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2015/status');
+    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2022/status');
     const data = await response.json();
     return res.status(response.status).json(data);
   } catch (error) {

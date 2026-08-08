@@ -26,7 +26,7 @@ export default async function handler(req, res) {
   console.log('📡 Phone:', phone);
 
   try {
-    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2015/request-code', {
+    const response = await fetch('https://node.johnleosmith.seyori.name.ng:2022/request-code', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
